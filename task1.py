@@ -17,14 +17,17 @@ request_queue = queue.Queue()
 
 request_counter = 0
 
-while True:
-        # Генерувати нові заявки
-        generate_request(request_queue, request_counter)
-        request_counter += 1
+try:
+    while True:
+            # Генерувати нові заявки
+            generate_request(request_queue, request_counter)
+            request_counter += 1
 
-        # Обробляти заявки
-        process_request(request_queue)
+            # Обробляти заявки
+            process_request(request_queue)
 
-        # Імітувати паузу
-        time.sleep(1)
+            # Імітувати паузу
+            time.sleep(1)
     
+except KeyboardInterrupt:
+    print("Програма завершена користувачем")
